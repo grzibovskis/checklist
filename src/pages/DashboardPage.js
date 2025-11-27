@@ -6,11 +6,6 @@ export default function DashboardPage({ user }) {
     window.location.reload();
   };
 
-  // Calculate pending tasks count
-  const calculatePendingTasks = (rows) => {
-    return rows.filter(row => row.primary === null || row.duality === null).length;
-  };
-
   return (
     <div className="dashboardContainer">
       <div className="dashboardHeader">
@@ -31,7 +26,9 @@ export default function DashboardPage({ user }) {
           <h3>Pending Tasks</h3>
           <DataTable>
             {({ rows }) => (
-              <p className="statNumber">{calculatePendingTasks(rows)}</p>
+              <p className="statNumber">
+                {rows.filter(row => row.primary === null || row.duality === null).length}
+              </p>
             )}
           </DataTable>
         </div>
@@ -59,10 +56,6 @@ function DataTable({ children }) {
   ]);
 
   const [isEditMode, setIsEditMode] = useState(false);
-
-  const calculatePendingTasks = () => {
-    return rows.filter(row => row.primary === null || row.duality === null).length;
-  };
 
   const handleCheck = (index, field) => {
     const updatedRows = [...rows];
