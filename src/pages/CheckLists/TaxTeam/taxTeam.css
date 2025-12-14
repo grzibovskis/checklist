@@ -1,0 +1,190 @@
+.tax-team-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.tax-team-content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* CONTROL BUTTONS */
+.tax-team-table-controls {
+  margin: 20px 0;
+}
+
+.tax-team-table-controls button {
+  margin-right: 10px;
+  padding: 8px 14px;
+  background: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tax-team-table-controls button:hover {
+  background: #0055aa;
+}
+
+.tax-team-table-wrapper {
+  margin-top: 20px;
+  overflow-x: auto;
+  overflow-y: auto;   /* ADD THIS */
+  max-height: 70vh;   /* so the table scrolls vertically */
+  text-align: left;
+}
+
+/* TABLE */
+.tax-team-table {
+  border-collapse: collapse;
+  width: auto;
+  display: inline-table; /* ensures left side + auto width */
+}
+
+/* CELLS */
+.tax-team-table th,
+.tax-team-table td {
+  border: 1px solid #ccc;
+  padding: 0;
+}
+
+.tax-team-table td input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 8px;
+  background: #fafafa;
+}
+
+/* Checkbox size */
+.tax-team-table td input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+/* HEADER */
+.tax-team-header {
+  text-align: center;
+  background: #eaeaea;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* POPUP OVERLAY */
+.tax-team-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+/* POPUP BOX */
+.tax-team-popup-box {
+  background: white;
+  width: 320px;
+  padding: 20px;
+  border-radius: 10px;
+  animation: fadeIn 0.2s ease;
+}
+
+.tax-team-popup-box h2 {
+  margin-bottom: 15px;
+}
+
+.tax-team-popup-box label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.tax-team-popup-box input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+}
+
+/* POPUP BUTTONS */
+.tax-team-popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.tax-team-apply-btn {
+  padding: 8px 12px;
+  background: #0075dd;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+.tax-team-cancel-btn {
+  padding: 8px 12px;
+  background: #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+.tax-team-textarea {
+  width: 100%;
+  height: 100%;
+  min-height: 32px;
+  resize: vertical; /* user can drag to expand downward */
+  padding: 6px;
+  border: none;
+  outline: none;
+  background: #fafafa;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.3;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+.tax-team-cell-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+}
+
+.tax-team-textarea.small {
+  min-height: 30px;
+  resize: none;
+}
+
+.highlight-btn {
+  margin-top: 2px;
+  padding: 3px 5px;
+  font-size: 12px;
+  cursor: pointer;
+  background: #e0e0e0;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.highlight-btn:hover {
+  background: #cfcfcf;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,481 @@
+.income-team-template-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.income-team-template-content {
+  flex: 1;
+  padding: 20px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 120px); /* Adjust based on your header/footer height */
+}
+
+.template-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.template-header h1 {
+  margin: 0;
+  color: #333;
+}
+
+.add-task-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-task-button:hover {
+  background-color: #45a049;
+}
+
+.table-container {
+  overflow: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  flex: 1;
+  position: relative;
+  max-height: calc(100vh - 200px); /* Adjust based on your layout */
+}
+
+.income-template-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  table-layout: fixed;
+}
+
+/* Sticky table header */
+.income-template-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 50; /* Lower than dropdown but higher than table content */
+}
+
+.income-template-table th {
+  background-color: #f5f5f5;
+  padding: 12px 8px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  font-weight: 600;
+  color: #333;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.income-template-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1; /* Ensure cells stay below dropdowns */
+}
+
+.editable-cell {
+  cursor: pointer;
+  min-height: 40px;
+}
+
+.editable-cell:hover {
+  background-color: #f9f9f9;
+}
+
+.cell-content {
+  min-height: 20px;
+  padding: 4px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.cell-input {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: inherit;
+  box-sizing: border-box;
+}
+
+.cell-input:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+.cell-input[type="textarea"] {
+  min-height: 60px;
+  resize: vertical;
+}
+
+.table-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Action buttons - CONTAINED within table */
+.action-buttons {
+  position: relative;
+  display: inline-block;
+}
+
+.action-button {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  width: 40px;
+  text-align: center;
+}
+
+.action-button:hover {
+  background-color: #f5f5f5;
+  border-color: #ccc;
+}
+
+/* Dropdown menu - CONTAINED within table cell */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 60; /* Higher than table header but lower than popups */
+  min-width: 150px;
+  margin-top: 2px;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  color: #333;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-item:disabled {
+  color: #999;
+  cursor: not-allowed;
+  background-color: #f9f9f9;
+}
+
+/* Dropdown backdrop - Only covers the table container */
+.dropdown-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 55; /* Between table header and dropdown */
+}
+
+/* Checkbox Popup Styles - This should appear above everything */
+.checkbox-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Highest z-index */
+}
+
+.checkbox-popup {
+  background: white;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+.checkbox-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.checkbox-popup-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.close-popup {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-popup:hover {
+  color: #333;
+}
+
+.checkbox-popup-content {
+  padding: 20px;
+}
+
+.checkbox-history {
+  margin-bottom: 20px;
+}
+
+.checkbox-history h4 {
+  margin: 0 0 10px 0;
+  color: #555;
+}
+
+.history-list {
+  background: #f9f9f9;
+  border-radius: 4px;
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  font-size: 13px;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-user {
+  font-weight: 600;
+  color: #333;
+  min-width: 100px;
+}
+
+.history-action {
+  color: #666;
+  font-style: italic;
+  margin: 0 10px;
+}
+
+.history-time {
+  color: #888;
+  font-size: 12px;
+}
+
+.no-history {
+  color: #999;
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+}
+
+.checkbox-popup-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.popup-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.remove-btn {
+  background-color: #ff4444;
+  color: white;
+}
+
+.remove-btn:hover {
+  background-color: #ff3333;
+}
+
+.cancel-btn {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* New column styles */
+.items-column {
+  width: 50px;
+}
+
+.items-input {
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.items-input::placeholder {
+  font-style: italic;
+  color: #999;
+  font-size: 11px;
+}
+
+.comments-column {
+  width: 100px;
+}
+
+.comments-input {
+  font-size: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.comments-input::placeholder {
+  font-style: italic;
+  color: #999;
+  font-size: 11px;
+}
+
+.shortname-column {
+  width: 80px;
+}
+
+.isin-column {
+  width: 100px;
+}
+
+.corpref-column {
+  width: 140px;
+}
+
+.transactions-column {
+  width: 50px;
+}
+
+/* For Task column specifically - allow text wrapping */
+.task-column .cell-content {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 100px;
+}
+
+.task-column .cell-input {
+  white-space: pre-wrap;
+  resize: vertical;
+  min-height: 60px;
+  max-height: 150px;
+}
+
+/* Ensure all inputs don't exceed column width */
+.cell-input {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Column width enforcement */
+.income-template-table td:nth-child(1) { width: 50px; }
+.income-template-table td:nth-child(2) { width: 450px; }
+.income-template-table td:nth-child(3) { width: 60px; }
+.income-template-table td:nth-child(4) { width: 40px; }
+.income-template-table td:nth-child(5) { width: 60px; }
+.income-template-table td:nth-child(6) { width: 40px; }
+.income-template-table td:nth-child(7) { width: 50px; }
+.income-template-table td:nth-child(8) { width: 100px; }
+.income-template-table td:nth-child(9) { width: 80px; }
+.income-template-table td:nth-child(10) { width: 100px; }
+.income-template-table td:nth-child(11) { width: 140px; }
+.income-template-table td:nth-child(12) { width: 50px; }
+.income-template-table td:nth-child(13) { width: 60px; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .income-team-template-content {
+    padding: 10px;
+    height: calc(100vh - 100px);
+  }
+  
+  .template-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .table-container {
+    max-height: calc(100vh - 180px);
+  }
+  
+  .income-template-table {
+    font-size: 13px;
+  }
+  
+  .income-template-table th,
+  .income-template-table td {
+    padding: 8px 4px;
+  }
+  
+  .action-button {
+    width: 30px;
+    padding: 4px 8px;
+  }
+  
+  .dropdown-menu {
+    min-width: 120px;
+  }
+}

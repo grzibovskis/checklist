@@ -1,0 +1,43 @@
+.header-container {
+  width: 100%;
+  padding: 15px 30px;
+  background-color: #1e1e1e;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-left {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Right button section */
+.header-right {
+  display: flex;
+  gap: 15px;
+  margin-right: 100px;
+}
+
+.start-button,
+.back-button,
+.stats-button {
+  padding: 10px 20px;
+  background-color: #4b8bff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.start-button:hover,
+.back-button:hover,
+.stats-button:hover {
+  background-color: #3076ff;
+}

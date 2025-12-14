@@ -1,0 +1,154 @@
+.income-team-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.income-team-body {
+  flex: 1;
+  display: flex;
+}
+
+/* LEFT SIDE */
+
+.left-column {
+  width: 300px;
+  border-right: 1px solid #ddd;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.add-btn {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  background: #4b8bff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+}
+
+.template-btn {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  background: #0fbd49;
+  border: none;
+  border-radius: 6px;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+}
+.month-title {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 6px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.month-title:hover {
+  background: #e2e2e2;
+}
+
+.arrow {
+  font-size: 12px;
+}
+
+/* dropdown */
+
+.month-content {
+  margin-left: 10px;
+  margin-bottom: 12px;
+}
+
+.empty {
+  font-size: 13px;
+  opacity: .6;
+}
+.month-block {
+  margin-bottom: 20px;
+}
+
+.month-block h3 {
+  margin-bottom: 10px;
+}
+
+.date-item {
+  padding: 6px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.date-item:hover {
+  background: #e6e6e6;
+}
+
+.date-item.active {
+  background: #4b8bff;
+  color: white;
+}
+
+/* RIGHT SIDE */
+
+.right-column {
+  flex: 1;
+  padding: 30px;
+}
+
+.placeholder {
+  font-size: 20px;
+  opacity: 0.6;
+}
+
+/* POPUP */
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.4);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:50;
+}
+
+.popup-box {
+  background:white;
+  padding:25px;
+  border-radius:10px;
+  width:300px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.2);
+}
+
+.popup-box input {
+  width:100%;
+  padding:8px;
+  margin-top:10px;
+}
+
+.popup-buttons {
+  display:flex;
+  justify-content:space-between;
+  margin-top:20px;
+}
+
+.popup-buttons button {
+  padding:8px 16px;
+  cursor:pointer;
+}
+
+.error {
+  color: red;
+  margin-top:10px;
+  font-size:14px;
+}

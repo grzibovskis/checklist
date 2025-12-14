@@ -1,0 +1,47 @@
+.start-page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* GRID */
+.start-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 70%;
+  margin: 60px auto;
+}
+
+/* CARD */
+.start-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.start-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Image on left */
+.card-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Text on right */
+.card-text {
+  flex: 1;
+  text-align: left;
+}

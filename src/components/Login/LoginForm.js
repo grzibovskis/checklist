@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { authenticateUser, getAllUsers } from "../database/users";
+import { authenticateUser, getAllUsers } from "../../database/users";
 
 export default function LoginForm({ onLogin }) {
   const [email, setEmail] = useState("");

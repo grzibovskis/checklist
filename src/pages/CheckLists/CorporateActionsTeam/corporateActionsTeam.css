@@ -1,0 +1,14 @@
+.corporate-actions-team-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.corporate-actions-team-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bold;
+}
