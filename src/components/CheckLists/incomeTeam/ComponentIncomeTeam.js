@@ -8,19 +8,21 @@ export default function ComponentIncomeTeam({ data }) {
   
   // Load tasks for this specific date from localStorage
   const loadTasksForDate = useCallback(() => {
-    if (!storageKey) return [
-      { 
-        id: 1, 
-        time: "", 
-        task: "", 
-        duality: "", 
-        checkbox1: false, 
-        primary: "", 
-        checkbox2: false,
-        checkbox1Logs: [],
-        checkbox2Logs: []
-      }
-    ];
+    if (!storageKey) {
+      return [
+        { 
+          id: 1, 
+          time: "", 
+          task: "", 
+          duality: "", 
+          checkbox1: false, 
+          primary: "", 
+          checkbox2: false,
+          checkbox1Logs: [],
+          checkbox2Logs: []
+        }
+      ];
+    }
 
     const savedTasks = localStorage.getItem(storageKey);
     if (savedTasks) {
@@ -45,6 +47,7 @@ export default function ComponentIncomeTeam({ data }) {
       }
     ];
   }, [storageKey]);
+
 
   const [tasks, setTasks] = useState(() => loadTasksForDate());
   const [editingCell, setEditingCell] = useState({ rowId: null, cellKey: null });
@@ -77,7 +80,7 @@ export default function ComponentIncomeTeam({ data }) {
         logs: []
       });
     }
-  }, [storageKey]); // Changed dependency from dateKey to storageKey
+  }, [storageKey, loadTasksForDate]);
 
   const handleCellChange = (rowId, cellKey, value) => {
     setTasks(prev => prev.map(task => 
