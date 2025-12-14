@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import "./componentIncomeTeam.css";
 
 export default function ComponentIncomeTeam({ data }) {
@@ -7,7 +7,7 @@ export default function ComponentIncomeTeam({ data }) {
                    (data?.label ? `checklist_${data.label.replace(/\//g, '-')}` : null);
   
   // Load tasks for this specific date from localStorage
-  const loadTasksForDate = () => {
+  const loadTasksForDate = useCallback(() => {
     if (!storageKey) return [
       { 
         id: 1, 
@@ -21,18 +21,16 @@ export default function ComponentIncomeTeam({ data }) {
         checkbox2Logs: []
       }
     ];
-    
+
     const savedTasks = localStorage.getItem(storageKey);
     if (savedTasks) {
       try {
         return JSON.parse(savedTasks);
       } catch (error) {
         console.error("Error parsing saved tasks:", error);
-        // Return default if parsing fails
       }
     }
-    
-    // Default task for new date if nothing exists
+
     return [
       { 
         id: 1, 
@@ -46,7 +44,7 @@ export default function ComponentIncomeTeam({ data }) {
         checkbox2Logs: []
       }
     ];
-  };
+  }, [storageKey]);
 
   const [tasks, setTasks] = useState(() => loadTasksForDate());
   const [editingCell, setEditingCell] = useState({ rowId: null, cellKey: null });
